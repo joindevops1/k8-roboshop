@@ -10,7 +10,7 @@ metadata:
 spec:
   replicas: 1
   selector:
-    matchLabels: # these labels are used to find the ponds
+    matchLabels: # these labels are used to find the pods
       app: mongodb
       project: roboshop
       tier: db
@@ -23,8 +23,8 @@ spec:
     spec:
       containers:
       - name: mongodb
-        image: rajesh028/mongodb:v1
-        imagepullpolicy: Always
+        image: joindevops/mongodb:v1
+        imagePullPolicy: Always
 ---
 apiVersion: v1
 kind: Service
@@ -34,9 +34,9 @@ metadata:
 spec:
   selector:
     app: mongodb
-        project: roboshop
-        tier: db
+    project: roboshop
+    tier: db
   ports:
   - protocol: TCP
     port: 27017 #service-port
-    targetPort: 27017 #container-port        
+    targetPort: 27017 #container-port
